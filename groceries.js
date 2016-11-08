@@ -21,3 +21,10 @@ function getCookie(cname) {
     }
     return "";
 }
+function addItem() {
+  var input = document.getElementById("newItem");
+  var list = document.getElementById("listDisplay");
+  var Item = document.createTextNode(input.value);
+   item.appendChild(itemName);
+   list.appendChild(item);
+}
