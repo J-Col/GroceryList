@@ -24,7 +24,8 @@ function getCookie(cname) {
 function addItem() {
   var input = document.getElementById("newItem");
   var list = document.getElementById("listDisplay");
-  var Item = document.createTextNode(input.value);
+  var itemName = document.createTextNode(input.value);
+  var item = document.createElement("li");
   input.value = "";
    item.appendChild(itemName);
    list.appendChild(item);
