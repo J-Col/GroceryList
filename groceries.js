@@ -24,9 +24,24 @@ function getCookie(cname) {
 function addItem() {
   var input = document.getElementById("newItem");
   var list = document.getElementById("listDisplay");
-  var itemName = document.createTextNode(input.value);
   var item = document.createElement("li");
+  var btnClose = document.createElement("button");
+  btnClose.classList.add("btn");
+  btnClose.classList.add("btn-danger");
+  btnClose.classList.add("btn-xs");
+  var iconClose = document.createElement("span");
+  iconClose.classlist.add("glyphicon");
+  iconClose.classlist.add("glyphicon-remove");
+  btnClose.appendChild(iconClose);
+  btnClose.addEventListener("click", removeParentListItem);
+  item.appendChild(btnClose);
+  var itemName = document.createTextNode(input.value);
+  list.appendChild(item);
+  item.appendChild(itemName);
   input.value = "";
-   item.appendChild(itemName);
-   list.appendChild(item);
 }
+  function removeParentListItem() {
+    var mom = this.parentNode;
+    var grandma = mom.parentNode;
+    grnadma.removeChild(mom);
+  }
