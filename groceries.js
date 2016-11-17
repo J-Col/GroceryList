@@ -21,8 +21,13 @@ function getCookie(cname) {
     }
     return "";
 }
+var myList = [];
 function addItem() {
   var input = document.getElementById("newItem");
+  if (myList.indexOf(input.value) != -1)
+  return;
+  myList.push(input.value);
+  console.log(myList);
   var list = document.getElementById("listDisplay");
   var item = document.createElement("li");
   var btnClose = document.createElement("button");
@@ -30,18 +35,23 @@ function addItem() {
   btnClose.classList.add("btn-danger");
   btnClose.classList.add("btn-xs");
   var iconClose = document.createElement("span");
-  iconClose.classlist.add("glyphicon");
-  iconClose.classlist.add("glyphicon-remove");
+  iconClose.classList.add("glyphicon");
+  iconClose.classList.add("glyphicon-remove");
   btnClose.appendChild(iconClose);
   btnClose.addEventListener("click", removeParentListItem);
   item.appendChild(btnClose);
   var itemName = document.createTextNode(input.value);
-  list.appendChild(item);
   item.appendChild(itemName);
+  list.appendChild(item);
   input.value = "";
 }
-  function removeParentListItem() {
-    var mom = this.parentNode;
-    var grandma = mom.parentNode;
-    grnadma.removeChild(mom);
-  }
+
+function removeParentListItem() {
+  var mom = this.parentNode;
+  var itemRemove = mom.firstChild;
+  var itemIndex = myList.indexOf(itemRemove);
+  myList.splice(itemIndex,1);
+  console.log(myList);
+  var grandma = mom.parentNode;
+  grandma.removeChild(mom);
+}
