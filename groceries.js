@@ -22,6 +22,19 @@ function getCookie(cname) {
     return "";
 }
 var myList = [];
+function saveList()
+{
+  var listString = myList.join();
+  setCookie("groceryList", listString, 2)
+}
+function clearList()
+{
+  var listD = document.getElementById("listDisplay");
+  while (listD.firstChild) {
+    listD.removeChild(listD.firstChild);
+  myList = [];
+  }
+}
 function addItem() {
   var input = document.getElementById("newItem");
   if (myList.indexOf(input.value) != -1)
