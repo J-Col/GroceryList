@@ -5,7 +5,8 @@ var myList = [];
 function loadCookieList()
 {
   var cookie = getCookie("groceryList");
-  if (cookie == "") return;
+  if (cookie == "")
+  return;
   var arrayCookie = cookie.split("|");
   for (var i = 0; i < arrayCookie.length; i++)
   {
